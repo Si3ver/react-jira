@@ -27,8 +27,7 @@ export const useMount = (callback: () => void) => {
 };
 
 // 变量节流
-// TODO 这里后面用泛型重构
-export const useDebounce = (value: unknown, delay?: number): any => {
+export const useDebounce = <V>(value: V, delay?: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
