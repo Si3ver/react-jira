@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "postinstall": "husky install",
-    "json-server": "json-server __json_server_mock__/db.json --watch --port 3001"
+    "json-server": "json-server __json_server_mock__/db.json --watch --port 3001 --middlewares ./__json_server_mock__/middleware.js"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
