@@ -23,3 +23,7 @@
 - React router
 - Redux toolkit
 - CSS in JS
+
+* 组件库 [antd](https://ant.design/index-cn)
+* 样式库 [Emotion](https://emotion.sh/docs/introduction)
+* 修改 antd 主题 [craco](https://github.com/gsoft-inc/craco)
