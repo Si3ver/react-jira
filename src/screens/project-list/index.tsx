@@ -5,11 +5,12 @@
  * 2. 更新数据：每次 param 变化，更新 list
  */
 
-import { SearchPanel } from "./search-panel";
-import { List } from "./list";
 import { useEffect, useState } from "react";
-import { cleanObject, useMount, useDebounce } from "../../utils";
+import { SearchPanel } from "screens/project-list/search-panel";
+import { List } from "screens/project-list/list";
+import { cleanObject, useDebounce, useMount } from "../../utils";
 import { useHttp } from "utils/http";
+import styled from "@emotion/styled";
 
 export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +25,6 @@ export const ProjectListScreen = () => {
 
   useEffect(() => {
     client("projects", { data: cleanObject(debouncedParam) }).then(setList);
-    // eslint-disable-next-line
   }, [debouncedParam]);
 
   useMount(() => {
@@ -32,9 +32,14 @@ export const ProjectListScreen = () => {
   });
 
   return (
-    <div>
+    <Container>
+      <h1>项目列表</h1>
       <SearchPanel users={users} param={param} setParam={setParam} />
       <List users={users} list={list} />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  padding: 3.2rem;
+`;

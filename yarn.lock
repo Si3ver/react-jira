@@ -1405,6 +1405,11 @@
     "@emotion/weak-memoize" "^0.2.5"
     stylis "^4.0.3"
 
+"@emotion/core@^11.0.0":
+  version "11.0.0"
+  resolved "https://bnpm.byted.org/@emotion/core/-/@emotion/core-11.0.0.tgz#d075867e07864119de7cfd5268c15012bd2d6290"
+  integrity sha1-0HWGfgeGQRnefP1SaMFQEr0tYpA=
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://bnpm.byted.org/@emotion/hash/-/@emotion/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -4494,6 +4499,11 @@ date-fns@^2.15.0:
   version "2.20.2"
   resolved "https://registry.npm.taobao.org/date-fns/download/date-fns-2.20.2.tgz?cache=0&sync_timestamp=1618233393770&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdate-fns%2Fdownload%2Fdate-fns-2.20.2.tgz#7f05d1275e1e43c3bdde5998201920098e19c6a1"
   integrity sha1-fwXRJ14eQ8O93lmYIBkgCY4ZxqE=
+
+dayjs@^1.10.4:
+  version "1.10.4"
+  resolved "https://bnpm.byted.org/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
+  integrity sha1-jlRKm4aD9heD9XCYCoqA6vVKseI=
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
