@@ -11,6 +11,7 @@ export interface User {
   email: string;
   organization: string;
   created: string;
+  token: string;
 }
 
 interface SearchPanelProps {

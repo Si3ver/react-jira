@@ -1,22 +1,7 @@
 import { FormEvent } from "react";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import { login } from "../../auth-provider";
 
 export const LoginScreen = () => {
-  const login = (param: { username: string; password: string }) => {
-    fetch(`${apiUrl}/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(param),
-    }).then(async (response: Response) => {
-      if (response.ok) {
-        // TODO
-      }
-    });
-  };
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.currentTarget.elements[0] as HTMLInputElement)
@@ -34,7 +19,7 @@ export const LoginScreen = () => {
       </div>
       <div>
         <label htmlFor="password">密码</label>
-        <input type="text" id={"password"} />
+        <input type="password" id={"password"} />
       </div>
       <button type={"submit"}>登录</button>
     </form>
