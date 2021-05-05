@@ -1,13 +1,14 @@
 import "./App.css";
-// import { ProjectListScreen } from "screens/project-list";
-import { LoginScreen } from "screens/login";
-// import { Counter } from './components/Counter'
+import { useAuth } from "context/auth-context";
+import { AuthenticatedApp } from "authenticated-app";
+import { UnAuthenticatedApp } from "unauthenticated-app";
+
 function App() {
+  const { user } = useAuth();
+
   return (
     <div className="App">
-      {/* <Counter initialCount={100} /> */}
-      {/* <ProjectListScreen /> */}
-      <LoginScreen />
+      {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
     </div>
   );
 }
