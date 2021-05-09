@@ -1,3 +1,7 @@
+/**
+ * @file 未登录时的状态展示（登录页面、注册页面）
+ */
+
 import { useState } from "react";
 import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";

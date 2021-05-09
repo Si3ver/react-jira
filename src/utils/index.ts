@@ -1,3 +1,7 @@
+/**
+ * @file 一些工具钩子 （cleanObject、useMount、useDebounce）
+ */
+
 import { useEffect, useState } from "react";
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);

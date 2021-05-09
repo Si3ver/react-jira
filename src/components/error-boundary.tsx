@@ -1,3 +1,8 @@
+/**
+ * @file: 错误边界
+ * 捕获全局异常，避免跳转到空白页面
+ */
+
 import React from "react";
 
 type FallbackRender = (props: { error: Error | null }) => React.ReactElement;
