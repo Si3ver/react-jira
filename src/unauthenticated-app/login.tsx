@@ -1,11 +1,22 @@
 import { useAuth } from "context/auth-context";
 import { Form, Input, Button } from "antd";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { login } = useAuth();
 
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await login(values);
+    } catch (error) {
+      onError(error);
+    }
   };
 
   return (
