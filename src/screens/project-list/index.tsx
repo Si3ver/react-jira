@@ -5,7 +5,7 @@
  * 2. 更新数据：每次 param 变化，更新 list
  */
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { SearchPanel } from "screens/project-list/search-panel";
 import { List } from "screens/project-list/list";
 import { useDebounce } from "utils";
@@ -13,6 +13,7 @@ import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/users";
+import { Helmet } from "react-helmet";
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -25,6 +26,9 @@ export const ProjectListScreen = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>项目列表</title>
+      </Helmet>
       <h1>项目列表</h1>
       <SearchPanel users={users || []} param={param} setParam={setParam} />
       {error ? (
