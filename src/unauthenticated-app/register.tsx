@@ -8,10 +8,18 @@ export const RegisterScreen = ({
 }) => {
   const { register } = useAuth();
 
-  const handleSubmit = async (values: {
+  const handleSubmit = async ({
+    cpassword,
+    ...values
+  }: {
     username: string;
     password: string;
+    cpassword: string;
   }) => {
+    if (cpassword !== values.password) {
+      onError(new Error("请确认两次输入的密码相同"));
+      return;
+    }
     try {
       await register(values);
     } catch (error) {
@@ -32,6 +40,12 @@ export const RegisterScreen = ({
         rules={[{ required: true, message: "请输入密码" }]}
       >
         <Input placeholder={"密码"} type="password" id={"password"} />
+      </Form.Item>
+      <Form.Item
+        name={"cpassword"}
+        rules={[{ required: true, message: "请确认密码" }]}
+      >
+        <Input placeholder={"确认密码"} type="cpassword" id={"cpassword"} />
       </Form.Item>
       <Form.Item>
         <Button htmlType={"submit"} type={"primary"}>
