@@ -1,5 +1,6 @@
 import { useAuth } from "context/auth-context";
 import { Form, Input, Button } from "antd";
+import { useAsync } from "utils/use-async";
 
 export const RegisterScreen = ({
   onError,
@@ -7,6 +8,7 @@ export const RegisterScreen = ({
   onError: (error: Error) => void;
 }) => {
   const { register } = useAuth();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
   const handleSubmit = async ({
     cpassword,
@@ -21,7 +23,7 @@ export const RegisterScreen = ({
       return;
     }
     try {
-      await register(values);
+      await run(register(values));
     } catch (error) {
       onError(error);
     }
@@ -45,10 +47,10 @@ export const RegisterScreen = ({
         name={"cpassword"}
         rules={[{ required: true, message: "请确认密码" }]}
       >
-        <Input placeholder={"确认密码"} type="cpassword" id={"cpassword"} />
+        <Input placeholder={"确认密码"} type="password" id={"cpassword"} />
       </Form.Item>
       <Form.Item>
-        <Button htmlType={"submit"} type={"primary"}>
+        <Button loading={isLoading} htmlType={"submit"} type={"primary"}>
           注册
         </Button>
       </Form.Item>
