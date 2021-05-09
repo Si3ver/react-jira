@@ -7,7 +7,7 @@ import logo from "assets/logo.svg";
 import left from "assets/left.svg";
 import right from "assets/right.svg";
 
-export const UnAuthenticatedApp = () => {
+export const UnauthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
