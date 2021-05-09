@@ -1,4 +1,3 @@
-import { stat } from "node:fs";
 import { useState } from "react";
 
 interface State<D> {
