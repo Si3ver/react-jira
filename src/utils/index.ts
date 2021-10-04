@@ -1,5 +1,7 @@
 /**
- * @file 一些工具钩子 （cleanObject、useMount、useDebounce）、修改标题、重置路由
+ * @file 工具函数、工具钩子
+ * 工具函数: 清洗对象假值、重置路由
+ * 工具钩子: useMount、useDebounce、修改标题
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -61,3 +63,20 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
 
 /** 重置路由 */
 export const resetRoute = () => (window.location.href = window.location.origin);
+
+/**
+ * 返回组件的挂载状态
+ * 未挂载、已卸载，均返回 false
+ */
+export const useMountedRef = () => {
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  });
+
+  return mountedRef;
+};
