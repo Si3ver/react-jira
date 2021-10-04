@@ -26,9 +26,7 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
-    // TODO 依赖项礼加上 callback 会造成无限循环，这个和 useCallback 以及 useMemo 有关
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [callback]);
 };
 
 // 变量节流
@@ -63,6 +61,24 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
 
 /** 重置路由 */
 export const resetRoute = () => (window.location.href = window.location.origin);
+
+/**
+ * 传入一个对象，和键集合，返回对应的对象中的键值对
+ * @param obj
+ * @param keys
+ */
+export const subset = <
+  O extends { [key in string]: unknown },
+  K extends keyof O
+>(
+  obj: O,
+  keys: K[]
+) => {
+  const filteredEntries = Object.entries(obj).filter(([key]) =>
+    keys.includes(key as K)
+  );
+  return Object.fromEntries(filteredEntries) as Pick<O, K>;
+};
 
 /**
  * 返回组件的挂载状态
