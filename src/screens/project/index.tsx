@@ -1,3 +1,7 @@
+/**
+ * @file 单个项目详情页
+ */
+
 import { Link } from "react-router-dom";
 import { Navigate, Route, Routes } from "react-router";
 import { KanbanScreen } from "screens/kanban";

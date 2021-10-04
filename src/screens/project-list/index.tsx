@@ -1,8 +1,10 @@
 /**
- * @file 项目列表组件
+ * @file 项目列表页
  * 功能
  * 1. 初始化：拉取数据 users、list
- * 2. 更新数据：每次 param 变化，更新 list
+ * 2. 搜索
+ * 3. 收藏
+ * 4. 创建、修改项目信息
  */
 
 import { SearchPanel } from "screens/project-list/search-panel";

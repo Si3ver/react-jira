@@ -1,5 +1,5 @@
 /**
- * @file 请求项目列表
+ * @file 项目相关的操作
  */
 
 import { useAsync } from "utils/use-async";
@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { cleanObject } from "utils/index";
 import { useHttp } from "utils/http";
 
+/** 拉取项目信息 */
 export const useProjects = (param?: Partial<Project>) => {
   const client = useHttp();
   const { run, ...result } = useAsync<Project[]>();
@@ -20,6 +21,7 @@ export const useProjects = (param?: Partial<Project>) => {
   return result;
 };
 
+/** 编辑项目 */
 export const useEditProject = () => {
   const { run, ...asyncResult } = useAsync();
   const client = useHttp();
@@ -37,6 +39,7 @@ export const useEditProject = () => {
   };
 };
 
+/** 增加项目 */
 export const useAddProject = () => {
   const { run, ...asyncResult } = useAsync();
   const client = useHttp();
