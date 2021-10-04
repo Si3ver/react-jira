@@ -10,14 +10,10 @@ export const isVoid = (value: unknown) =>
 
 // 在一个函数里，改变传入的对象本身是不好的
 export const cleanObject = (object: { [key: string]: unknown }) => {
-  // Object.assign({}, object)
   const result = { ...object };
   Object.keys(result).forEach((key) => {
-    // 0
-    // @ts-ignore
     const value = result[key];
     if (isVoid(value)) {
-      // @ts-ignore
       delete result[key];
     }
   });
