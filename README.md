@@ -27,3 +27,9 @@
 * 组件库 [antd](https://ant.design/index-cn)
 * 样式库 [Emotion](https://emotion.sh/docs/introduction)
 * 修改 antd 主题 [craco](https://github.com/gsoft-inc/craco)
+
+## 设计模式
+
+- 如何解决 props drilling？
+  - 方案一、 全局状态管理
+  - 方案二、 组合组件
