@@ -32,4 +32,4 @@
 
 - 如何解决 props drilling？
   - 方案一、 全局状态管理
-  - 方案二、 组合组件
+  - 方案二、 IoC 的思想，[组件组合-component composition](https://zh-hans.reactjs.org/docs/context.html#before-you-use-context)
