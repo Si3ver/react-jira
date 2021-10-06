@@ -33,9 +33,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { error, isLoading, isIdle, isError, run } = useAsync<User | null>();
   const dispatch: (...args: unknown[]) => Promise<User> = useDispatch();
 
-  useMount(() => {
-    run(dispatch(bootstrap()));
-  });
+  useMount(
+    useCallback(() => {
+      run(dispatch(bootstrap()));
+    }, [run, dispatch])
+  );
 
   if (isIdle || isLoading) {
     return <FullPageLoading />;
