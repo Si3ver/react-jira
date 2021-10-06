@@ -2,12 +2,10 @@
  * @file 项目相关的操作
  */
 
-import { useAsync } from "utils/use-async";
 import { Project } from "screens/project-list/list";
-// import { useCallback, useEffect } from "react";
 import { cleanObject } from "utils/index";
 import { useHttp } from "utils/http";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 /** 拉取项目信息 */
 export const useProjects = (param?: Partial<Project>) => {
@@ -18,54 +16,54 @@ export const useProjects = (param?: Partial<Project>) => {
       data: cleanObject(param || {}),
     })
   );
-  // const { run, ...result } = useAsync<Project[]>();
-
-  // const fetchProjects = useCallback(
-  //   () => client("projects", { data: cleanObject(param || {}) }),
-  //   [client, param]
-  // );
-
-  // useEffect(() => {
-  //   run(fetchProjects(), {
-  //     retry: fetchProjects,
-  //   });
-  // }, [param, run, fetchProjects]);
-
-  // return result;
 };
 
 /** 编辑项目 */
 export const useEditProject = () => {
-  const { run, ...asyncResult } = useAsync();
   const client = useHttp();
-  const mutate = (params: Partial<Project>) => {
-    return run(
-      client(`projects/${params.id}`, {
-        data: params,
+  const queryClient = useQueryClient();
+  return useMutation(
+    (params: Partial<Project>) => {
+      return client(`projects/${params.id}`, {
         method: "PATCH",
-      })
-    );
-  };
-  return {
-    mutate,
-    ...asyncResult,
-  };
+        data: params,
+      });
+    },
+    {
+      onSuccess: () => queryClient.invalidateQueries("projects"),
+    }
+  );
 };
 
 /** 增加项目 */
 export const useAddProject = () => {
-  const { run, ...asyncResult } = useAsync();
   const client = useHttp();
-  const mutate = (params: Partial<Project>) => {
-    return run(
-      client(`projects/${params.id}`, {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    (params: Partial<Project>) => {
+      return client(`projects`, {
         data: params,
         method: "POST",
-      })
-    );
-  };
-  return {
-    mutate,
-    ...asyncResult,
-  };
+      });
+    },
+    {
+      onSuccess: () => queryClient.invalidateQueries("projects"),
+    }
+  );
+};
+
+/** 获取某个项目的详情信息 */
+export const useProject = (id?: number) => {
+  const client = useHttp();
+  return useQuery<Project>(
+    ["project", { id }],
+    () => {
+      return client(`projects/${id}`);
+    },
+    {
+      enabled: !!id,
+      // enabled: id !== undefined && id !== null, // id 有值的时候才触发
+    }
+  );
 };
