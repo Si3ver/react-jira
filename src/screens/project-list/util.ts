@@ -22,7 +22,7 @@ export const useProjectModal = () => {
   ]);
 
   const open = () => setProjectCreate({ projectCreate: true });
-  const close = () => setProjectCreate({ projectCreate: false });
+  const close = () => setProjectCreate({ projectCreate: undefined });
 
   return {
     projectModalOpen: projectCreate === "true",
