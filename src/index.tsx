@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DevTools, loadServer } from "jira-dev-tool";
-import "antd/dist/antd.less";
 import { AppProviders } from "context";
+import "antd/dist/antd.less";
 
 loadServer(() =>
   ReactDOM.render(

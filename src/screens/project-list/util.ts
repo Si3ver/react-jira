@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useUrlQueryParam } from "../../utils/url";
+import { useUrlQueryParam } from "utils/url";
 
 /** 项目列表的搜索参数 */
 export const useProjectsSearchParams = () => {
@@ -13,4 +13,20 @@ export const useProjectsSearchParams = () => {
     }, [param]),
     setParam,
   ] as const;
+};
+
+/** 同步 Modal 与 url */
+export const useProjectModal = () => {
+  const [{ projectCreate }, setProjectCreate] = useUrlQueryParam([
+    "projectCreate",
+  ]);
+
+  const open = () => setProjectCreate({ projectCreate: true });
+  const close = () => setProjectCreate({ projectCreate: false });
+
+  return {
+    projectModalOpen: projectCreate === "true",
+    open,
+    close,
+  };
 };
